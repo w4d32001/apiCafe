@@ -37,4 +37,14 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public String login(String email, String password) {
+        return userRepository.findByEmail(email).map(user -> {
+            if (user.getPassword().equals(password)) {
+                return "Login exitoso";
+            } else {
+                return "Contraseña incorrecta";
+            }
+        }).orElse("Usuario no encontrado");
+    }
+
 }

@@ -49,5 +49,10 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
+    @GetMapping("/totalProducts")
+    public long totalProducts(){
+        return productService.totalProducts();
+    }
+
 
 }

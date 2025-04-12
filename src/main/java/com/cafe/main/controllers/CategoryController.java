@@ -42,4 +42,9 @@ public class CategoryController {
         categoryService.deleteCategory(id);
     }
 
+    @GetMapping("/totalCategories")
+    public long totalCategories(){
+        return categoryService.totalCategories();
+    }
+
 }

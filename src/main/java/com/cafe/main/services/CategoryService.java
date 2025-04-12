@@ -39,5 +39,8 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    public long totalCategories(){
+        return categoryRepository.count();
+    }
 
 }

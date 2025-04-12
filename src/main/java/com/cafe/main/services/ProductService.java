@@ -38,4 +38,10 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public long totalProducts(){
+        return productRepository.count();
+    }
+
+   
+
 }

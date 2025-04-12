@@ -22,26 +22,17 @@ public class OrderService {
         return orderRepository.findById(id).orElse(null);
     }
 
-    public OrderModel createOrder(OrderModel order){
+    public OrderModel createOrder(OrderModel order) {
         return orderRepository.save(order);
-    }
-
-    public OrderModel updateOrder(int id, OrderModel order){
-        OrderModel existingOrder = orderRepository.findById(id).orElse(null);
-        if(existingOrder != null){
-            existingOrder.setUser(order.getUser());
-            existingOrder.setProduct(order.getProduct());
-            existingOrder.setQuantity(order.getQuantity());
-            existingOrder.setTotalPrice(order.getTotalPrice());
-            existingOrder.setPaymentMethod(order.getPaymentMethod());
-            existingOrder.setOrderDate(order.getOrderDate());
-            return orderRepository.save(existingOrder);
-        }
-        return null;
     }
     
     public void deleteOrder(int id){
         orderRepository.deleteById(id);
     }
+
+    public long totalOrders(){
+        return orderRepository.count();
+    }
+
 
 }
