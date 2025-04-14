@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,7 +46,7 @@ public class OrderModel {
 
     @UpdateTimestamp
     private Date updatedAt;
-
+    @JsonIgnoreProperties({"orders"})
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItemModel> items;
 }

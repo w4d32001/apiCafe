@@ -1,6 +1,8 @@
 package com.cafe.main.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class OrderItemModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"items", "user"})
     @ManyToOne
     @JoinColumn(name = "order_id")
     private OrderModel order;
@@ -28,4 +30,8 @@ public class OrderItemModel {
 
     private int quantity;
     private double subtotal;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public UserModel getUser() {
+        return this.order != null ? this.order.getUser() : null;
+    }
 }

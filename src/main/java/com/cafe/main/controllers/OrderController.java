@@ -23,8 +23,8 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("/getAll")
-    public List<OrderModel> getAll() {
-        return orderService.getOrders();
+    public List<OrderItemModel> getAll() {
+        return orderService.getAll();
     }
 
     @PostMapping("/save")
